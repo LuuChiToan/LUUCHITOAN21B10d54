@@ -180,6 +180,7 @@ public class PolarAreaChart extends javax.swing.JComponent {
         panel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 51, 255));
         jLabel1.setText("Personal Income and Expense Chart in percentage");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -191,8 +192,9 @@ public class PolarAreaChart extends javax.swing.JComponent {
                 .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
+                .addGap(59, 59, 59)
                 .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
