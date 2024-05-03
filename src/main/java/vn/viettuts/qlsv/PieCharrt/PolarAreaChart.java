@@ -22,8 +22,8 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 public class PolarAreaChart extends javax.swing.JComponent {
 
     private final List<ModelPolarAreaChart> list = new ArrayList<>();
-    private long maxValues;
-    private long totalValues;
+    private double maxValues;
+    private double totalValues;
     private final int PADDING_BOTTON = 30;
     private final Animator animator;
     private float animate;
@@ -76,8 +76,8 @@ public class PolarAreaChart extends javax.swing.JComponent {
             double startAngle = 90;
             for (ModelPolarAreaChart data : list) {
                 g2.setColor(data.getColor());
-                double angle = valuesToAngle((long) data.getValues());
-                double rs = valuesToRealSize((long) data.getValues(), size) * animate;
+                double angle = valuesToAngle(data.getValues());
+                double rs = valuesToRealSize(data.getValues(), size) * animate;
                 Shape s = createShape(startAngle, angle, rs);
                 g2.fill(s);
                 g2.setComposite(AlphaComposite.Clear);
@@ -112,30 +112,30 @@ public class PolarAreaChart extends javax.swing.JComponent {
     private Shape createShape(double start, double end, double values) {
         int width = getWidth();
         int height = getHeight() - PADDING_BOTTON;
-        long x = (long) ((width - values) / 2);
-        long y = (long) ((height - values) / 2);
+        double x = (width - values) / 2;
+        double y = (height - values) / 2;
         Shape shape = new Arc2D.Double(x, y, values, values, start, end, Arc2D.PIE);
         return shape;
     }
 
-    private long valuesToRealSize(long values, int size) {
-        long n = values * 100 / maxValues;
+    private double valuesToRealSize(double values, int size) {
+        double n = values * 100 / maxValues;
         return n * size / 100;
     }
 
-    private long valuesToAngle(long values) {
-        long n = values * 100 / totalValues;
+    private double valuesToAngle(double values) {
+        double n = values * 100 / totalValues;
         return n * 360 / 100;
     }
 
     private Point getLocation(double angle, double rs) {
-        long x = (long) (Math.cos(Math.toRadians(angle)) * rs);
-        long y = (long) (Math.sin(Math.toRadians(angle)) * rs);
+        double x = Math.cos(Math.toRadians(angle)) * rs;
+        double y = Math.sin(Math.toRadians(angle)) * rs;
         return new Point((int) x, (int) y);
     }
 
     private void calculateValues(ModelPolarAreaChart data) {
-        maxValues = (long) Math.max(maxValues, data.getValues());
+        maxValues = Math.max(maxValues, data.getValues());
         totalValues = 0;
         for (ModelPolarAreaChart l : list) {
             totalValues += l.getValues();
@@ -174,9 +174,13 @@ public class PolarAreaChart extends javax.swing.JComponent {
     private void initComponents() {
 
         panel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         panel.setOpaque(false);
         panel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("Personal Income and Expense Chart in percentage");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -186,17 +190,22 @@ public class PolarAreaChart extends javax.swing.JComponent {
                 .addContainerGap()
                 .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(264, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 }

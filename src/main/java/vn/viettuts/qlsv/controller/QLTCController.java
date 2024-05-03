@@ -8,7 +8,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import java.util.ArrayList;
-import javax.swing.JTable;
 import vn.viettuts.qlsv.dao.QLTCDao;
 import vn.viettuts.qlsv.entity.QLTC;
 import vn.viettuts.qlsv.view.QLTCView;
@@ -38,7 +37,7 @@ public class QLTCController {
         qltcView.setVisible(true);
         qltcView.showListQLTC(qltcList);
         qltcView.updateLabels(qltcList);
-
+        qltcView.updateLabelsThongke(qltcList);
     }
 
     class AddQLTCListener implements ActionListener {
@@ -140,7 +139,7 @@ public class QLTCController {
                 qltcView.showListQLTC(temp);
                 qltcView.showExpenseIncomePieChart(temp);
                 qltcView.updateLabels(temp);
-           
+                qltcView.updateLabelsThongke(temp);
                 
             } else {
                 qltcView.showMessage("Không tìm thấy kết quả!");

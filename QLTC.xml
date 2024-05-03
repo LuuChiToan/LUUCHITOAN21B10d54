@@ -67,7 +67,7 @@
         <id>10</id>
         <date>2024-01-10T00:00:00+07:00</date>
         <description>phu cap</description>
-        <amount>100000</amount>
+        <amount>1000</amount>
         <type>Income</type>
     </qltc>
     <qltc>
@@ -122,140 +122,133 @@
     <qltc>
         <id>18</id>
         <date>2024-01-18T00:00:00+07:00</date>
-        <description>fef</description>
-        <amount>2451</amount>
+        <description>tu thuong ban than</description>
+        <amount>500</amount>
         <type>Income</type>
     </qltc>
     <qltc>
         <id>19</id>
         <date>2024-01-19T00:00:00+07:00</date>
-        <description>fsas</description>
-        <amount>5341</amount>
+        <description>giai sau</description>
+        <amount>500</amount>
         <type>Expense</type>
     </qltc>
     <qltc>
         <id>20</id>
         <date>2024-01-20T00:00:00+07:00</date>
-        <description>mmvs</description>
+        <description>lam them</description>
         <amount>423</amount>
         <type>Expense</type>
     </qltc>
     <qltc>
         <id>21</id>
         <date>2024-01-21T00:00:00+07:00</date>
-        <description>ewd</description>
-        <amount>231</amount>
+        <description>nhat duoc</description>
+        <amount>200</amount>
         <type>Expense</type>
     </qltc>
     <qltc>
         <id>22</id>
         <date>2024-01-22T00:00:00+07:00</date>
-        <description>rewc</description>
-        <amount>44300</amount>
-        <type>Expense</type>
+        <description>tang cuong</description>
+        <amount>5000</amount>
+        <type>Income</type>
     </qltc>
     <qltc>
         <id>23</id>
         <date>2024-01-25T00:00:00+07:00</date>
-        <description>trt</description>
-        <amount>543</amount>
+        <description>di du lich</description>
+        <amount>10000</amount>
         <type>Expense</type>
     </qltc>
     <qltc>
         <id>24</id>
         <date>2024-01-24T00:00:00+07:00</date>
-        <description>few</description>
-        <amount>231</amount>
+        <description>tau luon sieu toc</description>
+        <amount>200</amount>
         <type>Expense</type>
     </qltc>
     <qltc>
         <id>25</id>
         <date>2024-01-25T00:00:00+07:00</date>
-        <description>uer</description>
-        <amount>24510</amount>
-        <type>Income</type>
+        <description>mua khoa hoc tieng trung</description>
+        <amount>5000</amount>
+        <type>Expense</type>
     </qltc>
     <qltc>
         <id>26</id>
         <date>2024-01-26T00:00:00+07:00</date>
-        <description>tétd</description>
-        <amount>3242</amount>
-        <type>Expense</type>
+        <description>lam them</description>
+        <amount>5000</amount>
+        <type>Income</type>
     </qltc>
     <qltc>
         <id>27</id>
         <date>2024-01-27T00:00:00+07:00</date>
-        <description>éwr</description>
-        <amount>3231</amount>
+        <description>xa xi chet</description>
+        <amount>1000</amount>
         <type>Expense</type>
     </qltc>
     <qltc>
         <id>28</id>
         <date>2024-01-28T00:00:00+07:00</date>
-        <description>fesf</description>
-        <amount>3261</amount>
-        <type>Expense</type>
+        <description>hehe</description>
+        <amount>3000</amount>
+        <type>Income</type>
     </qltc>
     <qltc>
         <id>29</id>
         <date>2024-01-29T00:00:00+07:00</date>
-        <description>trcsw</description>
-        <amount>754</amount>
+        <description>ong cho</description>
+        <amount>10000</amount>
         <type>Income</type>
     </qltc>
     <qltc>
         <id>30</id>
         <date>2024-01-30T00:00:00+07:00</date>
-        <description>fefhe</description>
-        <amount>53262</amount>
-        <type>Expense</type>
+        <description>bo cho</description>
+        <amount>5000</amount>
+        <type>Income</type>
     </qltc>
     <qltc>
         <id>31</id>
         <date>2024-01-31T00:00:00+07:00</date>
-        <description>dsf</description>
-        <amount>3232</amount>
-        <type>Expense</type>
-    </qltc>
-    <qltc>
-        <id>32</id>
-        <date>2024-05-16T10:02:47.608+07:00</date>
-        <description>eww</description>
-        <amount>32423</amount>
+        <description>di choi xa</description>
+        <amount>300</amount>
         <type>Expense</type>
     </qltc>
     <qltc>
         <id>33</id>
         <date>2024-02-01T00:00:00+07:00</date>
-        <description>eww</description>
-        <amount>323</amount>
+        <description>mua xe</description>
+        <amount>20000</amount>
         <type>Expense</type>
     </qltc>
     <qltc>
         <id>34</id>
         <date>2024-02-02T00:00:00+07:00</date>
-        <description>qs</description>
-        <amount>432</amount>
+        <description>lam them</description>
+        <amount>1000</amount>
         <type>Expense</type>
     </qltc>
     <qltc>
         <id>35</id>
         <date>2024-02-01T00:00:00+07:00</date>
-        <description>qs</description>
-        <amount>20000</amount>
+        <description>nhan luong muon</description>
+        <amount>30000</amount>
         <type>Income</type>
     </qltc>
     <qltc>
         <id>36</id>
         <date>2024-01-01T00:00:00+07:00</date>
-        <description>trêd</description>
+        <description>me cho</description>
         <amount>20000</amount>
         <type>Income</type>
     </qltc>
     <qltc>
         <id>37</id>
         <date>2024-02-03T00:00:00+07:00</date>
-        <description>dsff</description>
+        <description>di choi</description>
         <amount>25300</amount>
         <type>Expense</type>
     </qltc>

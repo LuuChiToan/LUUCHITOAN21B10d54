@@ -3,8 +3,8 @@ package vn.viettuts.qlsv.PieCharrt;
 
 import java.awt.Color;
 
-
 public class ModelPolarAreaChart {
+
     public Color getColor() {
         return color;
     }
@@ -25,11 +25,11 @@ public class ModelPolarAreaChart {
         return values;
     }
 
-    public void setValues(long values) {
+    public void setValues(double values) {
         this.values = values;
     }
 
-    public ModelPolarAreaChart(Color color, String name, long values) {
+    public ModelPolarAreaChart(Color color, String name, double values) {
         this.color = color;
         this.name = name;
         this.values = values;
@@ -40,5 +40,5 @@ public class ModelPolarAreaChart {
 
     private Color color;
     private String name;
-    private long values;
+    private double values;
 }

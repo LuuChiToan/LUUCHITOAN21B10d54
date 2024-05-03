@@ -32,25 +32,6 @@ private final String [] columnNames = new String [] {
     private final Object data = new Object [][] {};
     private List<QLTC> qltcs;
     int handle = 1;
-//   public List<Long> splitAmountsByType(List<Long> amounts, List<String> types) {
-//    List<Long> amountByType = new ArrayList<>();
-//    long totalIncome = 0;
-//    long totalExpense = 0;
-//     
-//    for (int i = 0; i < amounts.size(); i++) {
-//        if ("Expense".equals(types.get(i))) {
-//            totalExpense += amounts.get(i);
-//        } else if ("Income".equals(types.get(i))) {
-//            totalIncome += amounts.get(i);
-//        }
-//    }
-//    
-//    amountByType.add(totalExpense);
-//    amountByType.add(totalIncome);
-//
-//    return amountByType;
-//    
-//}
     public QLTCView() {
         initComponents();
         addBtn.setEnabled(true);
@@ -64,7 +45,7 @@ private final String [] columnNames = new String [] {
 
     }
     public void showExpenseIncomePieChart(List<QLTC> qltcTable) {
-        polarAreaChart.clear();
+        
         long totalExpense = 0;
         long totalIncome = 0;
         for (QLTC record : qltcTable) {
@@ -77,12 +58,12 @@ private final String [] columnNames = new String [] {
                 totalIncome += amount;
             }
         }
-
-        
-        
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(255,51,51), "Expense", totalExpense));
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(87, 218, 137), "Income", totalIncome));
-        
+        long total = totalExpense + totalIncome;
+        double percentageExpense = (double) totalExpense * 100 / total;
+        double percentageIncome =  (double) totalIncome * 100 / total;
+        polarAreaChart.clear();
+        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(255,51,51), "Expense",   percentageExpense));
+        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(87, 218, 137), "Income", percentageIncome));
         polarAreaChart.start();
     }
     
@@ -116,12 +97,29 @@ private final String [] columnNames = new String [] {
         Quanlithuchi.add(totalExpenseLabel);
         Quanlithuchi.add(totalIncomeLabel);
         Quanlithuchi.add(profitLabel);
-        Quanlithuchi.add(lossLabel);
-
-        
+        Quanlithuchi.add(lossLabel);        
     }
-
-
+public void updateLabelsThongke(List<QLTC> list) {
+        long totalExpense = 0;
+        long totalIncome = 0;
+        for (QLTC ex :list) {
+            if ("Expense".equals(ex.getType())) {
+                totalExpense += ex.getAmount();
+            } else if ("Income".equals(ex.getType())) {
+                totalIncome += ex.getAmount();
+            }
+        }        
+        long profit = totalIncome - totalExpense;
+        long loss = totalExpense - totalIncome;
+        totalExpenseLabelThongke.setText("Tổng chi: " + totalExpense);
+        totalIncomeLabelThongke.setText("Tổng thu: " + totalIncome);
+        profitLabelThongke.setText("Lợi nhuận: " + (profit > 0 ? profit : 0));
+        lossLabelThongke.setText("Thiệt hại: " + (loss > 0 ? loss : 0));
+        Thongke.add(totalExpenseLabelThongke);
+        Thongke.add(totalIncomeLabelThongke);
+        Thongke.add(profitLabelThongke);
+        Thongke.add(lossLabelThongke);      
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -177,9 +175,13 @@ private final String [] columnNames = new String [] {
         polarAreaChart = new vn.viettuts.qlsv.PieCharrt.PolarAreaChart();
         jScrollPane2 = new javax.swing.JScrollPane();
         qltcTable1 = new javax.swing.JTable();
+        totalExpenseLabelThongke = new javax.swing.JLabel();
+        totalIncomeLabelThongke = new javax.swing.JLabel();
+        profitLabelThongke = new javax.swing.JLabel();
+        lossLabelThongke = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1500, 800));
+        setPreferredSize(new java.awt.Dimension(1843, 800));
         setResizable(false);
         setSize(new java.awt.Dimension(1843, 800));
         getContentPane().setLayout(null);
@@ -521,47 +523,42 @@ private final String [] columnNames = new String [] {
         QuanlithuchiLayout.setVerticalGroup(
             QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(QuanlithuchiLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, QuanlithuchiLayout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                                .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                                        .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(FieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnSearch))
-                                        .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                                                .addGap(111, 111, 111)
-                                                .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnCancelSearch)))))
-                                .addGap(14, 14, 14))
                             .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(Description)
-                                .addComponent(descriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6)
-                                .addComponent(amountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel7)
-                                .addComponent(typeCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel3)
+                                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1))
                             .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                                .addComponent(addBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(editBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(clearBtn)
-                                .addGap(8, 8, 8)
-                                .addComponent(deleteBtn)))))
+                                .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(FieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnSearch))
+                                .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(QuanlithuchiLayout.createSequentialGroup()
+                                        .addGap(111, 111, 111)
+                                        .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(QuanlithuchiLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnCancelSearch)))))
+                        .addGap(11, 11, 11))
+                    .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Description)
+                        .addComponent(descriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)
+                        .addComponent(amountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)
+                        .addComponent(typeCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(QuanlithuchiLayout.createSequentialGroup()
+                        .addComponent(addBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(clearBtn)
+                        .addGap(8, 8, 8)
+                        .addComponent(deleteBtn)))
                 .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(QuanlithuchiLayout.createSequentialGroup()
                         .addGap(136, 136, 136)
@@ -598,13 +595,23 @@ private final String [] columnNames = new String [] {
         ThongkeLayout.setHorizontalGroup(
             ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ThongkeLayout.createSequentialGroup()
-                .addGroup(ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(ThongkeLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1071, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ThongkeLayout.createSequentialGroup()
                         .addGap(228, 228, 228)
-                        .addComponent(polarAreaChart, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(polarAreaChart, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(ThongkeLayout.createSequentialGroup()
+                                .addGap(169, 169, 169)
+                                .addGroup(ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(totalIncomeLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(profitLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lossLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ThongkeLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(totalExpenseLabelThongke, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(1724, Short.MAX_VALUE))
         );
         ThongkeLayout.setVerticalGroup(
@@ -612,8 +619,19 @@ private final String [] columnNames = new String [] {
             .addGroup(ThongkeLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(polarAreaChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ThongkeLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(polarAreaChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ThongkeLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(totalExpenseLabelThongke, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(totalIncomeLabelThongke, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(profitLabelThongke, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(lossLabelThongke, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -931,16 +949,14 @@ public void clearQLTCInfo() {
      private boolean validateType(){
          String type = (String)typeCombobox.getSelectedItem();
              return false;
-     }
-     
+     }   
      private boolean validateAmount() {
         try {
             long amount = Long.parseLong(amountField.getText().trim());
             if (amount<0) {
                 amountField.requestFocus();
                 showMessage("Khoản tiền không hợp lệ.");
-                return false;
-            
+                return false;         
         }
         } catch (Exception e) {
             amountField.requestFocus();
@@ -950,10 +966,8 @@ public void clearQLTCInfo() {
         return true;
      
         
-    }
-     
-     
-      public int getChoseSelectSearch() {
+    }    
+        public int getChoseSelectSearch() {
         Object selectedOption = jComboBox1.getSelectedIndex();
         
 // Kiểm tra xem mục đang được chọn là gì
@@ -1116,14 +1130,18 @@ public void clearQLTCInfo() {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lossLabel;
+    private javax.swing.JLabel lossLabelThongke;
     private vn.viettuts.qlsv.PieCharrt.PolarAreaChart polarAreaChart;
     private javax.swing.JLabel profitLabel;
+    private javax.swing.JLabel profitLabelThongke;
     private javax.swing.JTable qltcTable;
     private javax.swing.JTable qltcTable1;
     private javax.swing.JLabel quanlithuchi;
     private javax.swing.JLabel thongke;
     private javax.swing.JLabel totalExpenseLabel;
+    private javax.swing.JLabel totalExpenseLabelThongke;
     private javax.swing.JLabel totalIncomeLabel;
+    private javax.swing.JLabel totalIncomeLabelThongke;
     private javax.swing.JLabel trangchu;
     private javax.swing.JComboBox<String> typeCombobox;
     // End of variables declaration//GEN-END:variables

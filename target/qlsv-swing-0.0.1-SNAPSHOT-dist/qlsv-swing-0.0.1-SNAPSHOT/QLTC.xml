@@ -4,7 +4,7 @@
         <id>1</id>
         <date>2024-01-01T00:00:00+07:00</date>
         <description>com rang</description>
-        <amount>35</amount>
+        <amount>350000</amount>
         <type>Expense</type>
     </qltc>
     <qltc>
@@ -54,7 +54,7 @@
         <date>2024-01-08T00:00:00+07:00</date>
         <description>lam them</description>
         <amount>340</amount>
-        <type>Income</type>
+        <type>Expense</type>
     </qltc>
     <qltc>
         <id>9</id>
@@ -247,9 +247,9 @@
     </qltc>
     <qltc>
         <id>36</id>
-        <date>2024-01-01T10:47:29.367+07:00</date>
+        <date>2024-01-01T00:00:00+07:00</date>
         <description>trêd</description>
-        <amount>200</amount>
+        <amount>200000</amount>
         <type>Income</type>
     </qltc>
 </QLTC>
