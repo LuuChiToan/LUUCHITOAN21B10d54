@@ -90,10 +90,10 @@ private final String [] columnNames = new String [] {
             handle =0;
         }
 
-        totalExpenseLabel.setText("Tổng chi: " + totalExpense);
-        totalIncomeLabel.setText("Tổng thu: " + totalIncome);
-        profitLabel.setText("Lợi nhuận: " + (profit > 0 ? profit : 0));
-        lossLabel.setText("Thiệt hại: " + (loss > 0 ? loss : 0));
+        totalExpenseLabel.setText("Total Expense: " + totalExpense);
+        totalIncomeLabel.setText("Total Income: " + totalIncome);
+        profitLabel.setText("Profit: " + (profit > 0 ? profit : 0));
+        lossLabel.setText("Loss: " + (loss > 0 ? loss : 0));
         Quanlithuchi.add(totalExpenseLabel);
         Quanlithuchi.add(totalIncomeLabel);
         Quanlithuchi.add(profitLabel);
@@ -111,10 +111,10 @@ public void updateLabelsThongke(List<QLTC> list) {
         }        
         long profit = totalIncome - totalExpense;
         long loss = totalExpense - totalIncome;
-        totalExpenseLabelThongke.setText("Tổng chi: " + totalExpense);
-        totalIncomeLabelThongke.setText("Tổng thu: " + totalIncome);
-        profitLabelThongke.setText("Lợi nhuận: " + (profit > 0 ? profit : 0));
-        lossLabelThongke.setText("Thiệt hại: " + (loss > 0 ? loss : 0));
+        totalExpenseLabelThongke.setText("Total Expense: " + totalExpense);
+        totalIncomeLabelThongke.setText("Total Income: " + totalIncome);
+        profitLabelThongke.setText("Profit: " + (profit > 0 ? profit : 0));
+        lossLabelThongke.setText("Loss: " + (loss > 0 ? loss : 0));
         Thongke.add(totalExpenseLabelThongke);
         Thongke.add(totalIncomeLabelThongke);
         Thongke.add(profitLabelThongke);
@@ -335,7 +335,7 @@ public void updateLabelsThongke(List<QLTC> list) {
                 .addComponent(buttonquanlithuchi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
                 .addComponent(buttonthongke, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
                 .addComponent(Buttondangxuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
         );
@@ -602,16 +602,12 @@ public void updateLabelsThongke(List<QLTC> list) {
                     .addGroup(ThongkeLayout.createSequentialGroup()
                         .addGap(228, 228, 228)
                         .addComponent(polarAreaChart, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(169, 169, 169)
                         .addGroup(ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ThongkeLayout.createSequentialGroup()
-                                .addGap(169, 169, 169)
-                                .addGroup(ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(totalIncomeLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(profitLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lossLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ThongkeLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(totalExpenseLabelThongke, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(totalIncomeLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(profitLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lossLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(totalExpenseLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(1724, Short.MAX_VALUE))
         );
         ThongkeLayout.setVerticalGroup(
