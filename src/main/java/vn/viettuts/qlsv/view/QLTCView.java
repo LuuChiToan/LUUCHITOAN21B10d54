@@ -85,7 +85,7 @@ private final String [] columnNames = new String [] {
         long loss = totalExpense - totalIncome;
         
         if (loss > 0 && handle == 0) {
-            JOptionPane.showMessageDialog(this, "Chi vượt quá thu");
+            JOptionPane.showMessageDialog(this, "Expense exceeds Income");
         }else{
             handle =0;
         }
