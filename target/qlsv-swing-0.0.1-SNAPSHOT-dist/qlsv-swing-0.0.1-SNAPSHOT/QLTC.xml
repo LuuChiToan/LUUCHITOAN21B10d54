@@ -102,7 +102,7 @@
         <id>15</id>
         <date>2024-01-15T00:00:00+07:00</date>
         <description>me cho</description>
-        <amount>5000</amount>
+        <amount>500</amount>
         <type>Expense</type>
     </qltc>
     <qltc>
@@ -156,23 +156,23 @@
     </qltc>
     <qltc>
         <id>23</id>
-        <date>2024-01-25T00:00:00+07:00</date>
-        <description>di du lich</description>
-        <amount>10000</amount>
-        <type>Expense</type>
-    </qltc>
-    <qltc>
-        <id>24</id>
         <date>2024-01-24T00:00:00+07:00</date>
         <description>tau luon sieu toc</description>
         <amount>200</amount>
         <type>Expense</type>
     </qltc>
     <qltc>
-        <id>25</id>
+        <id>24</id>
         <date>2024-01-25T00:00:00+07:00</date>
         <description>mua khoa hoc tieng trung</description>
         <amount>5000</amount>
+        <type>Expense</type>
+    </qltc>
+    <qltc>
+        <id>25</id>
+        <date>2024-01-25T00:00:00+07:00</date>
+        <description>di du lich</description>
+        <amount>10000</amount>
         <type>Expense</type>
     </qltc>
     <qltc>
@@ -218,38 +218,24 @@
         <type>Expense</type>
     </qltc>
     <qltc>
-        <id>33</id>
+        <id>32</id>
         <date>2024-02-01T00:00:00+07:00</date>
         <description>mua xe</description>
         <amount>20000</amount>
         <type>Expense</type>
     </qltc>
     <qltc>
-        <id>34</id>
-        <date>2024-02-02T00:00:00+07:00</date>
-        <description>lam them</description>
-        <amount>1000</amount>
-        <type>Expense</type>
-    </qltc>
-    <qltc>
-        <id>35</id>
+        <id>33</id>
         <date>2024-02-01T00:00:00+07:00</date>
         <description>nhan luong muon</description>
         <amount>30000</amount>
         <type>Income</type>
     </qltc>
     <qltc>
-        <id>36</id>
-        <date>2024-01-01T00:00:00+07:00</date>
-        <description>me cho</description>
-        <amount>20000</amount>
-        <type>Income</type>
-    </qltc>
-    <qltc>
-        <id>37</id>
-        <date>2024-02-03T00:00:00+07:00</date>
-        <description>di choi</description>
-        <amount>25300</amount>
+        <id>34</id>
+        <date>2024-02-02T00:00:00+07:00</date>
+        <description>lam them</description>
+        <amount>1000</amount>
         <type>Expense</type>
     </qltc>
 </QLTC>

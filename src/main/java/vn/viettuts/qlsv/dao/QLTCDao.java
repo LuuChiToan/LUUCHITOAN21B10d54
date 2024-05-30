@@ -1,21 +1,15 @@
 package vn.viettuts.qlsv.dao;
- import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
- import javax.swing.table.AbstractTableModel;
 import vn.viettuts.qlsv.entity.QLTC;
 import vn.viettuts.qlsv.entity.QLTCXML;
 import vn.viettuts.qlsv.utils.FileUtils;
- import java.util.Locale;
-import java.text.Collator;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.stream.Collectors;
 /**
  * StudentDao class
  * 
@@ -25,7 +19,6 @@ public class QLTCDao {
     private static final String QLTC_FILE_NAME = "qltc.xml";
     
     private List<QLTC> listQLTCs;
-   private final String[] columnNames = {"ID","Date","Description","Amount","Type"};
     public QLTCDao() {
         listQLTCs= new ArrayList<>();
         this.listQLTCs = readListQLTCs();
@@ -49,91 +42,117 @@ public class QLTCDao {
         }
         return list;
     }
-    public void add(QLTC qltc) {
-        int id = 1;
-        if (listQLTCs != null && listQLTCs.size() > 0) {
-            id = listQLTCs.size() + 1;
-        }
-        qltc.setId(id);
-        listQLTCs.add(qltc );
-        writeListQLTCs(listQLTCs);
-    }
-     public void edit(QLTC qltc) {
-        int size = listQLTCs.size();
-        for (int i = 0; i < size; i++) {
-            if (listQLTCs.get(i).getId() == qltc.getId()) {
-                listQLTCs.get(i).setDate(qltc.getDate());
-                listQLTCs.get(i).setDescription(qltc.getDescription());
-                listQLTCs.get(i).setAmount((int) qltc.getAmount());
-                listQLTCs.get(i).setType(qltc.getType());
-                writeListQLTCs(listQLTCs);
-                break;
-            }
-        }
-     }
-     public boolean delete(QLTC qltc) {
-        boolean isFound = false;
-        int size = listQLTCs.size();
-        for (int i = 0; i < size; i++) {
-            if (listQLTCs.get(i).getId() ==qltc.getId()) {
-                qltc = listQLTCs.get(i);
-                isFound = true;
-                break;
-            }
-        }
-        if (isFound) {
-            listQLTCs.remove(qltc);
-            writeListQLTCs(listQLTCs);
-            return true;
-        }
-        return false;
-    }
-    
-      public void sortQLTCByID() {
-        Collections.sort(listQLTCs, new Comparator<QLTC>() {
-            public int compare(QLTC qltc1, QLTC qltc2) {
-                if (qltc1.getId() > qltc2.getId()) {
-                    return 1;
-                }
-                return -1;
-            }
-        });
-    }
-     public void sortQLTCByDate(){
-         
-        Collections.sort(listQLTCs, new Comparator<QLTC>() {
-        @Override
-        public int compare(QLTC date1, QLTC date2) {
-            Date d1 = date1.getDate();
-            Date d2 = date2.getDate();
+       public void add(QLTC qltc) {
+    int id;
+    if (listQLTCs != null && !listQLTCs.isEmpty()) {
+        // Find the highest existing ID
+        int maxId = listQLTCs.stream()
+            .mapToInt(QLTC::getId)
+            .max()
+            .orElse(0); // Default to 0 if the list is empty
 
-            if (d1 == null && d2 == null) {
+        // Increment the highest ID to get a new unique ID
+        id = maxId + 1;
+    } else {
+        // If the list is empty, start with ID 1
+        id = 1;
+    }
+
+    qltc.setId(id);
+    listQLTCs.add(qltc);
+    writeListQLTCs(listQLTCs);
+}
+
+public void edit(QLTC qltc) {
+    int size = listQLTCs.size();
+    for (int i = 0; i < size; i++) {
+        if (listQLTCs.get(i).getId() == qltc.getId()) {
+            listQLTCs.get(i).setDate(qltc.getDate());
+            listQLTCs.get(i).setDescription(qltc.getDescription());
+            listQLTCs.get(i).setAmount((long) qltc.getAmount());
+            listQLTCs.get(i).setType(qltc.getType());
+            writeListQLTCs(listQLTCs);
+            break;
+        }
+    }
+}
+
+public boolean delete(QLTC qltc) {
+    boolean isFound = false;
+    int size = listQLTCs.size();
+    for (int i = 0; i < size; i++) {
+        if (listQLTCs.get(i).getId() == qltc.getId()) {
+            qltc = listQLTCs.get(i);
+            isFound = true;
+            break;
+        }
+    }
+    if (isFound) {
+        listQLTCs.remove(qltc);
+        // Reassign IDs to maintain sequential order
+        for (int i = 0; i < listQLTCs.size(); i++) {
+            listQLTCs.get(i).setId(i + 1);
+        }
+        writeListQLTCs(listQLTCs);
+        return true;
+    }
+    return false;
+}
+public void sortQLTCByDate(List<QLTC> listQLTCs) {
+    Collections.sort(listQLTCs, new Comparator<QLTC>() {
+        @Override
+        public int compare(QLTC q1, QLTC q2) {
+            Date date1 = q1.getDate();
+            Date date2 = q2.getDate();
+
+            if (date1 == null && date2 == null) {
                 return 0;
             }
-            if (d1 == null) {
+            if (date1 == null) {
                 return 1;
             }
-            if (d2 == null) {
+            if (date2 == null) {
                 return -1;
             }
-            return d1.compareTo(d2);
+            return date1.compareTo(date2);
         }
     });
 
-    // Đặt lại ID cho mỗi QLTC trong danh sách sau khi đã sắp xếp
-    for (int i = 0; i < listQLTCs.size(); i++) {
-        listQLTCs.get(i).setId(i + 1);
-    }
+    // Update IDs after sorting
+//    for (int i = 0; i < listQLTCs.size(); i++) {
+//        listQLTCs.get(i).setId(i + 1);
+//    }
 
-    // In ra các ngày sau khi đã sắp xếp
+    // Print sorted dates
     for (QLTC dateChooser : listQLTCs) {
         Date date = dateChooser.getDate();
-        if (date != null) {
-            System.out.println(date.toString());
-        }
+//        if (date != null) {
+//            System.out.println(date.toString());
+//        }
     }
-    
-     }
+}
+public void sortQLTCByAmount(List<QLTC> listQLTCs) {
+    Collections.sort(listQLTCs, new Comparator<QLTC>() {
+        @Override
+        public int compare(QLTC q1, QLTC q2) {
+            long amount1 = q1.getAmount();
+            long amount2 = q2.getAmount();
+
+            return Long.compare(amount1, amount2);
+        }
+    });
+
+    // Update IDs after sorting
+//    for (int i = 0; i < listQLTCs.size(); i++) {
+//        listQLTCs.get(i).setId(i + 1);
+//    }
+
+    // Print sorted amounts
+//    for (QLTC q : listQLTCs) {
+//        System.out.println("ID: " + q.getId() + ", Amount: " + q.getAmount());
+//    }
+}
+
       public List<QLTC> searchDescription(String search){
         List<QLTC>temp = new ArrayList<QLTC>();
         for(QLTC pb : listQLTCs){
@@ -161,6 +180,34 @@ public class QLTCDao {
         }
     }
     return DhTmp;
+}
+    public List<QLTC> searchByAmountRange(String amountRange) {
+    List<QLTC> filteredTransactions = new ArrayList<>();
+    this.listQLTCs = readListQLTCs(); // Assuming this method reads the transactions from somewhere
+
+    // Parse the input amount range (e.g., "100 to 500")
+    String[] amounts = amountRange.split(" to ");
+    if (amounts.length != 2) {
+        // Handle invalid input (e.g., not in the format "amount to amount")
+        return filteredTransactions;
+    }
+
+    try {
+        double minAmount = Double.parseDouble(amounts[0]);
+        double maxAmount = Double.parseDouble(amounts[1]);
+
+        for (QLTC transaction : this.listQLTCs) {
+            double transactionAmount = transaction.getAmount();
+            if (transactionAmount >= minAmount && transactionAmount <= maxAmount) {
+                filteredTransactions.add(transaction);
+            }
+        }
+    } catch (NumberFormatException e) {
+        // Handle invalid numeric input
+        e.printStackTrace();
+    }
+
+    return filteredTransactions;
 }
       
      public List<QLTC> searchMonth(String s){

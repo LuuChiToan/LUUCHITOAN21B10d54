@@ -5,6 +5,7 @@ vn\viettuts\qlsv\entity\QLTC.class
 vn\viettuts\qlsv\view\QLTCView$5.class
 vn\viettuts\qlsv\controller\QLTCController$SortDateListener.class
 vn\viettuts\qlsv\controller\LoginController$LoginListener.class
+vn\viettuts\qlsv\controller\QLTCController$SortbyamountListener.class
 vn\viettuts\qlsv\dao\QLTCDao$2.class
 vn\viettuts\qlsv\view\LoginView.class
 vn\viettuts\qlsv\view\QLTCView$3.class
@@ -27,7 +28,7 @@ vn\viettuts\qlsv\entity\QLTCXML.class
 vn\viettuts\qlsv\controller\QLTCController.class
 vn\viettuts\qlsv\entity\User.class
 vn\viettuts\qlsv\view\QLTCView$4.class
-vn\viettuts\qlsv\view\QLTCView$9.class
+vn\viettuts\qlsv\controller\QLTCController$SortbydateListener.class
 vn\viettuts\qlsv\controller\QLTCController$CancelSearchQLTCListener.class
 vn\viettuts\qlsv\controller\QLTCController$ClearQLTCListener.class
 vn\viettuts\qlsv\dao\UserDao.class

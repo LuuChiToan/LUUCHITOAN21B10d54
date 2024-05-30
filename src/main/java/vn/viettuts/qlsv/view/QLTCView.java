@@ -6,9 +6,9 @@ package vn.viettuts.qlsv.view;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JButton;
@@ -89,11 +89,12 @@ private final String [] columnNames = new String [] {
         }else{
             handle =0;
         }
-
-        totalExpenseLabel.setText("Total Expense: " + totalExpense);
-        totalIncomeLabel.setText("Total Income: " + totalIncome);
-        profitLabel.setText("Profit: " + (profit > 0 ? profit : 0));
-        lossLabel.setText("Loss: " + (loss > 0 ? loss : 0));
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        
+        totalExpenseLabel.setText("Total Expense: " + decimalFormat.format(totalExpense));
+        totalIncomeLabel.setText("Total Income: " + decimalFormat.format(totalIncome));
+        profitLabel.setText("Profit: " + (profit > 0 ? decimalFormat.format(profit) : 0));
+        lossLabel.setText("Loss: " + (loss > 0 ? decimalFormat.format(loss) : 0));
         Quanlithuchi.add(totalExpenseLabel);
         Quanlithuchi.add(totalIncomeLabel);
         Quanlithuchi.add(profitLabel);
@@ -163,14 +164,18 @@ public void updateLabelsThongke(List<QLTC> list) {
         descriptionField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         dateField = new com.toedter.calendar.JDateChooser();
-        jLabel1 = new javax.swing.JLabel();
-        idField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         qltcTable = new javax.swing.JTable();
         totalExpenseLabel = new javax.swing.JLabel();
         totalIncomeLabel = new javax.swing.JLabel();
         profitLabel = new javax.swing.JLabel();
         lossLabel = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        qltcTable2 = new javax.swing.JTable();
+        idField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        sortbydate = new javax.swing.JButton();
+        sortbyamount = new javax.swing.JButton();
         Thongke = new javax.swing.JPanel();
         polarAreaChart = new vn.viettuts.qlsv.PieCharrt.PolarAreaChart();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -179,6 +184,8 @@ public void updateLabelsThongke(List<QLTC> list) {
         totalIncomeLabelThongke = new javax.swing.JLabel();
         profitLabelThongke = new javax.swing.JLabel();
         lossLabelThongke = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        qltcTable3 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1843, 800));
@@ -187,10 +194,11 @@ public void updateLabelsThongke(List<QLTC> list) {
         getContentPane().setLayout(null);
 
         Menu.setBackground(new java.awt.Color(51, 204, 255));
+        Menu.setPreferredSize(new java.awt.Dimension(288, 720));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/_54eff0cc-1eb5-4a85-975c-3f36ad83b675 (1).jpg"))); // NOI18N
 
-        trangchu.setText("            Trang chủ");
+        trangchu.setText("     Trang chủ");
         trangchu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 trangchuMouseClicked(evt);
@@ -204,11 +212,9 @@ public void updateLabelsThongke(List<QLTC> list) {
         buttontrangchuLayout.setHorizontalGroup(
             buttontrangchuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttontrangchuLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(trangchu, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(trangchu, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
         );
         buttontrangchuLayout.setVerticalGroup(
             buttontrangchuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,7 +222,7 @@ public void updateLabelsThongke(List<QLTC> list) {
             .addComponent(trangchu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        quanlithuchi.setText("       Quản lí thu chi");
+        quanlithuchi.setText("Quản lí thu chi");
         quanlithuchi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 quanlithuchiMouseClicked(evt);
@@ -230,11 +236,10 @@ public void updateLabelsThongke(List<QLTC> list) {
         buttonquanlithuchiLayout.setHorizontalGroup(
             buttonquanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonquanlithuchiLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(quanlithuchi, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(quanlithuchi, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(130, 130, 130))
         );
         buttonquanlithuchiLayout.setVerticalGroup(
             buttonquanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,7 +251,7 @@ public void updateLabelsThongke(List<QLTC> list) {
         );
 
         thongke.setBackground(new java.awt.Color(102, 204, 0));
-        thongke.setText("             Thống kê");
+        thongke.setText("  Thống kê");
         thongke.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 thongkeMouseClicked(evt);
@@ -260,11 +265,10 @@ public void updateLabelsThongke(List<QLTC> list) {
         buttonthongkeLayout.setHorizontalGroup(
             buttonthongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonthongkeLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(3, 3, 3)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(thongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(thongke, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
         );
         buttonthongkeLayout.setVerticalGroup(
             buttonthongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,7 +284,7 @@ public void updateLabelsThongke(List<QLTC> list) {
             }
         });
 
-        dangxuat.setText("               Đăng xuất");
+        dangxuat.setText("  Đăng xuất");
         dangxuat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dangxuatMouseClicked(evt);
@@ -294,7 +298,7 @@ public void updateLabelsThongke(List<QLTC> list) {
         ButtondangxuatLayout.setHorizontalGroup(
             ButtondangxuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ButtondangxuatLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(4, 4, 4)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dangxuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -313,35 +317,36 @@ public void updateLabelsThongke(List<QLTC> list) {
                 .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MenuLayout.createSequentialGroup()
                         .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(buttontrangchu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buttonthongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buttonquanlithuchi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(MenuLayout.createSequentialGroup()
-                                .addGap(73, 73, 73)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(buttonthongke, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(buttonquanlithuchi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, Short.MAX_VALUE)
+                                .addComponent(buttontrangchu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(Buttondangxuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(MenuLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(49, 49, 49)
                 .addComponent(buttontrangchu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
                 .addComponent(buttonquanlithuchi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
                 .addComponent(buttonthongke, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
                 .addComponent(Buttondangxuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
         );
 
         getContentPane().add(Menu);
-        Menu.setBounds(6, 10, 280, 720);
+        Menu.setBounds(6, 10, 130, 720);
 
         Trangchu.setPreferredSize(new java.awt.Dimension(1843, 800));
 
@@ -399,7 +404,7 @@ public void updateLabelsThongke(List<QLTC> list) {
         Quanlithuchi.setMinimumSize(new java.awt.Dimension(1293, 1000));
         Quanlithuchi.setPreferredSize(new java.awt.Dimension(1293, 720));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Date", "Description","Month","Week" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Date", "Description","Month","Week","Amount Range" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -441,15 +446,20 @@ public void updateLabelsThongke(List<QLTC> list) {
 
         jLabel3.setText("Date");
 
-        jLabel1.setText("ID");
-
-        idField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idFieldActionPerformed(evt);
-            }
-        });
-
         qltcTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null,null},
+                {null, null, null, null,null},
+                {null, null, null, null,null},
+                {null, null, null, null,null}
+            },
+            new String []  {
+                "ID","Date", "Description", "Amount","Type"
+            }
+        ) );
+        jScrollPane1.setViewportView(qltcTable);
+
+        qltcTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null,null},
                 {null, null, null, null,null},
@@ -460,28 +470,42 @@ public void updateLabelsThongke(List<QLTC> list) {
                 "ID", "Date", "Description", "Amount","Type"
             }
         ) );
-        jScrollPane1.setViewportView(qltcTable);
+        jScrollPane4.setViewportView(qltcTable2);
+
+        jLabel1.setText("ID");
+
+        sortbydate.setText("Sort by Date");
+
+        sortbyamount.setText("Sort by Amount");
 
         javax.swing.GroupLayout QuanlithuchiLayout = new javax.swing.GroupLayout(Quanlithuchi);
         Quanlithuchi.setLayout(QuanlithuchiLayout);
         QuanlithuchiLayout.setHorizontalGroup(
             QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap()
                 .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                        .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(189, 189, 189)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(QuanlithuchiLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(QuanlithuchiLayout.createSequentialGroup()
+                                .addComponent(FieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnSearch)
+                                    .addComponent(btnCancelSearch)))
                             .addGroup(QuanlithuchiLayout.createSequentialGroup()
                                 .addComponent(Description, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -495,55 +519,52 @@ public void updateLabelsThongke(List<QLTC> list) {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(typeCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(deleteBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(clearBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(editBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(407, 407, 407))
-                            .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                                .addComponent(FieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnCancelSearch)
-                                    .addComponent(btnSearch))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lossLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(totalExpenseLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(totalIncomeLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(profitLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
+                            .addGroup(QuanlithuchiLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                                .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(totalExpenseLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(profitLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(totalIncomeLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lossLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32))
+                            .addGroup(QuanlithuchiLayout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(sortbyamount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(sortbydate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         QuanlithuchiLayout.setVerticalGroup(
             QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCancelSearch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(QuanlithuchiLayout.createSequentialGroup()
                         .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel3)
-                                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1))
-                            .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                                .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(FieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnSearch))
-                                .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                                        .addGap(111, 111, 111)
-                                        .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnCancelSearch)))))
-                        .addGap(11, 11, 11))
+                                .addComponent(jLabel1)
+                                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8))
                     .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Description)
                         .addComponent(descriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -559,19 +580,25 @@ public void updateLabelsThongke(List<QLTC> list) {
                         .addComponent(clearBtn)
                         .addGap(8, 8, 8)
                         .addComponent(deleteBtn)))
-                .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                        .addGap(136, 136, 136)
+                        .addGap(49, 49, 49)
+                        .addGroup(QuanlithuchiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(QuanlithuchiLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
                         .addComponent(totalExpenseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(totalIncomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(profitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lossLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(QuanlithuchiLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lossLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(138, 138, 138)
+                        .addComponent(sortbydate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(sortbyamount)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -585,42 +612,58 @@ public void updateLabelsThongke(List<QLTC> list) {
                 {null, null, null, null,null}
             },
             new String []  {
-                "ID", "Date", "Description", "Amount","Type"
+                "Date", "Description", "Amount","Type"
             }
         ) );
         jScrollPane2.setViewportView(qltcTable1);
+
+        qltcTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null,null},
+                {null, null, null, null,null},
+                {null, null, null, null,null},
+                {null, null, null, null,null}
+            },
+            new String []  {
+                "Date", "Description", "Amount","Type"
+            }
+        ) );
+        jScrollPane3.setViewportView(qltcTable3);
 
         javax.swing.GroupLayout ThongkeLayout = new javax.swing.GroupLayout(Thongke);
         Thongke.setLayout(ThongkeLayout);
         ThongkeLayout.setHorizontalGroup(
             ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ThongkeLayout.createSequentialGroup()
-                .addGroup(ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(ThongkeLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1071, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ThongkeLayout.createSequentialGroup()
                         .addGap(228, 228, 228)
                         .addComponent(polarAreaChart, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(169, 169, 169)
-                        .addGroup(ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(totalIncomeLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(totalIncomeLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                             .addComponent(profitLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lossLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(totalExpenseLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(1724, Short.MAX_VALUE))
+                            .addComponent(totalExpenseLabelThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(ThongkeLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(1871, Short.MAX_VALUE))
         );
         ThongkeLayout.setVerticalGroup(
             ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ThongkeLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
                 .addGroup(ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(ThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(polarAreaChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(ThongkeLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(polarAreaChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ThongkeLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
+                        .addGap(27, 27, 27)
                         .addComponent(totalExpenseLabelThongke, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(totalIncomeLabelThongke, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -635,31 +678,29 @@ public void updateLabelsThongke(List<QLTC> list) {
         Tab.setLayout(TabLayout);
         TabLayout.setHorizontalGroup(
             TabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Thongke, javax.swing.GroupLayout.DEFAULT_SIZE, 3094, Short.MAX_VALUE))
             .addGroup(TabLayout.createSequentialGroup()
                 .addGroup(TabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Trangchu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(TabLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(Quanlithuchi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(1111, 1111, 1111))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabLayout.createSequentialGroup()
-                .addComponent(Thongke, javax.swing.GroupLayout.PREFERRED_SIZE, 2801, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(Quanlithuchi, javax.swing.GroupLayout.PREFERRED_SIZE, 1351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1111, 1257, Short.MAX_VALUE))
         );
         TabLayout.setVerticalGroup(
             TabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Trangchu, javax.swing.GroupLayout.DEFAULT_SIZE, 1366, Short.MAX_VALUE)
             .addGroup(TabLayout.createSequentialGroup()
                 .addGroup(TabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Thongke, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(TabLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(Quanlithuchi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Thongke, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(444, 640, Short.MAX_VALUE))
-            .addComponent(Trangchu, javax.swing.GroupLayout.DEFAULT_SIZE, 1366, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(Quanlithuchi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(Tab);
-        Tab.setBounds(283, 0, 2954, 1366);
+        Tab.setBounds(137, 0, 3100, 1366);
 
         pack();
         setLocationRelativeTo(null);
@@ -714,10 +755,6 @@ public void updateLabelsThongke(List<QLTC> list) {
         controller.showLoginView();
     }//GEN-LAST:event_dangxuatMouseClicked
 
-    private void idFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idFieldActionPerformed
-
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editBtnActionPerformed
@@ -728,94 +765,139 @@ public void updateLabelsThongke(List<QLTC> list) {
         JOptionPane.showMessageDialog(this, message);
         
     }
+  public void showListQLTC(List<QLTC> list) {
+    int expenseRowCount = 0;
 
-    public List<Long> getAmountsFromTable(String type) {
-    List<Long> amounts = new ArrayList<>();
-    // Assume qltcTable is your JTable
-    for (int i = 0; i < qltcTable.getRowCount(); i++) {
-        Object value = qltcTable.getValueAt(i, 4);
-        if (value != null && value.equals(type)) {
-            Object amountObj = qltcTable.getValueAt(i, 3);
-            if (amountObj != null) {
-                try {
-                    // Convert amountObj to Long
-                    long amount = Long.parseLong(amountObj.toString());
-                    amounts.add(amount);
-                } catch (NumberFormatException e) {
-                    // Handle parsing error if necessary
-                    e.printStackTrace();
-                }
-            }
+    // Đếm số lượng giao dịch Expense để xác định kích thước của mảng qltcs
+    for (QLTC qltc : list) {
+        if ("Expense".equals(qltc.getType())) {
+            expenseRowCount++;
         }
     }
-    return amounts;
-}
-    public List<Long> getAmountsFromTable1(String type) {
-    List<Long> amounts = new ArrayList<>();
-    // Assume qltcTable is your JTable
-    for (int i = 0; i < qltcTable1.getRowCount(); i++) {
-        Object value = qltcTable1.getValueAt(i, 4);
-        if (value != null && value.equals(type)) {
-            Object amountObj = qltcTable1.getValueAt(i, 3);
-            if (amountObj != null) {
-                try {
-                    // Convert amountObj to Long
-                    long amount = Long.parseLong(amountObj.toString());
-                    amounts.add(amount);
-                } catch (NumberFormatException e) {
-                    // Handle parsing error if necessary
-                    e.printStackTrace();
-                }
+
+    Object[][] qltcs = new Object[expenseRowCount][5];
+    int currentRow = 0; // Dùng để theo dõi chỉ số hàng hiện tại trong mảng qltcs
+
+    for (QLTC qltc : list) {
+        if ("Expense".equals(qltc.getType())) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd/MM/yyyy");
+            Date date = qltc.getDate();
+            if (date != null) {
+                //qltcs[currentRow][1] = dateFormat.format(date);
+                qltcs[currentRow][1] = dateFormat.format(date);
+            } else {
+                //qltcs[currentRow][1] = "";
+                qltcs[currentRow][1] = "";
             }
+            qltcs[currentRow][0] = qltc.getId();
+            qltcs[currentRow][2] = qltc.getDescription();
+            qltcs[currentRow][3] = qltc.getFormattedAmount();
+            qltcs[currentRow][4] = qltc.getType();
+            currentRow++;
         }
     }
-    return amounts;
-}
-    public List<String> getTypesFromTable() {
-    List<String> types = new ArrayList<>();
-    DefaultTableModel model = (DefaultTableModel) qltcTable.getModel();
-    int rowCount = model.getRowCount();
-
-    for (int i = 0; i < rowCount; i++) {
-        String type = (String) model.getValueAt(i, 4); // Column index for 'Type' is 4
-        types.add(type);
-    }
-
-    return types;
-}
-    public List<String> getTypesFromTable1() {
-    List<String> types = new ArrayList<>();
-    DefaultTableModel model = (DefaultTableModel) qltcTable1.getModel();
-    int rowCount = model.getRowCount();
-
-    for (int i = 0; i < rowCount; i++) {
-        String type = (String) model.getValueAt(i, 4); // Column index for 'Type' is 4
-        types.add(type);
-    }
-
-    return types;
-}
-    public void showListQLTC(List<QLTC> list) {
-        int size = list.size();
-       
-        Object [][] qltcs = new Object[size][5];
+    
         
-        for (int i = 0; i < size; i++) {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd/MM/yyyy");   
-    Date date = list.get(i).getDate();
-    if (date != null) {
-        qltcs[i][1] = dateFormat.format(date);
-    } else {
-        qltcs[i][1] = ""; // hoặc có thể gán một giá trị mặc định khác tùy thuộc vào yêu cầu của bạn
-    }
-            qltcs[i][0] = list.get(i).getId();            
-            qltcs[i][2] = list.get(i).getDescription();
-            qltcs[i][3] = list.get(i).getAmount();
-            qltcs[i][4] = list.get(i).getType();            
-        }
         qltcTable.setModel(new DefaultTableModel(qltcs, columnNames));
+       qltcTable.getColumnModel().getColumn(0).setPreferredWidth(50);
+       qltcTable.getColumnModel().getColumn(0).setMinWidth(50);
+       qltcTable.getColumnModel().getColumn(0).setMaxWidth(50);
+       qltcTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+       qltcTable.getColumnModel().getColumn(3).setMinWidth(100);
+       qltcTable.getColumnModel().getColumn(3).setMaxWidth(100);
+       qltcTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+       qltcTable.getColumnModel().getColumn(2).setMinWidth(100);
+       qltcTable.getColumnModel().getColumn(2).setMaxWidth(100);
+       qltcTable.getColumnModel().getColumn(1).setPreferredWidth(150);
+       qltcTable.getColumnModel().getColumn(1).setMaxWidth(150);
+       qltcTable.getColumnModel().getColumn(1).setMinWidth(150);
+       qltcTable.getColumnModel().getColumn(4).setPreferredWidth(90);
+       qltcTable.getColumnModel().getColumn(4).setMaxWidth(90);
+       qltcTable.getColumnModel().getColumn(4).setMinWidth(90);
        qltcTable1.setModel(new DefaultTableModel(qltcs, columnNames));
+       qltcTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
+       qltcTable1.getColumnModel().getColumn(0).setMinWidth(50);
+       qltcTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+       qltcTable1.getColumnModel().getColumn(3).setPreferredWidth(100);
+       qltcTable1.getColumnModel().getColumn(3).setMinWidth(100);
+       qltcTable1.getColumnModel().getColumn(3).setMaxWidth(100);
+       qltcTable1.getColumnModel().getColumn(2).setPreferredWidth(100);
+       qltcTable1.getColumnModel().getColumn(2).setMinWidth(100);
+       qltcTable1.getColumnModel().getColumn(2).setMaxWidth(100);
+       qltcTable1.getColumnModel().getColumn(1).setPreferredWidth(150);
+       qltcTable1.getColumnModel().getColumn(1).setMaxWidth(150);
+       qltcTable1.getColumnModel().getColumn(1).setMinWidth(150);
+       qltcTable1.getColumnModel().getColumn(4).setPreferredWidth(90);
+       qltcTable1.getColumnModel().getColumn(4).setMaxWidth(90);
+       qltcTable1.getColumnModel().getColumn(4).setMinWidth(90);
     }
+public void showListQLTC1(List<QLTC> list) {
+    int expenseRowCount = 0;
+
+    // Đếm số lượng giao dịch Expense để xác định kích thước của mảng qltcs
+    for (QLTC qltc : list) {
+        if ("Income".equals(qltc.getType())) {
+            expenseRowCount++;
+        }
+    }
+
+    Object[][] qltcs = new Object[expenseRowCount][5];
+    int currentRow = 0; // Dùng để theo dõi chỉ số hàng hiện tại trong mảng qltcs
+
+    for (QLTC qltc : list) {
+        if ("Income".equals(qltc.getType())) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd/MM/yyyy");
+            Date date = qltc.getDate();
+            if (date != null) {
+                //qltcs[currentRow][1] = dateFormat.format(date);
+                qltcs[currentRow][1] = dateFormat.format(date);
+            } else {
+                //qltcs[currentRow][1] = "";
+                qltcs[currentRow][1] = "";
+            }
+            qltcs[currentRow][0] = qltc.getId();
+            qltcs[currentRow][2] = qltc.getDescription();
+            qltcs[currentRow][3] = qltc.getFormattedAmount();
+            qltcs[currentRow][4] = qltc.getType();
+            currentRow++;
+        }
+    }
+    
+        
+        //qltcTable.setModel(new DefaultTableModel(qltcs, columnNames));
+       qltcTable2.setModel(new DefaultTableModel(qltcs, columnNames));
+       qltcTable3.setModel(new DefaultTableModel(qltcs, columnNames));
+       qltcTable2.getColumnModel().getColumn(0).setPreferredWidth(50);
+       qltcTable2.getColumnModel().getColumn(0).setMinWidth(50);
+       qltcTable2.getColumnModel().getColumn(0).setMaxWidth(50);
+       qltcTable2.getColumnModel().getColumn(3).setPreferredWidth(100);
+       qltcTable2.getColumnModel().getColumn(3).setMinWidth(100);
+       qltcTable2.getColumnModel().getColumn(3).setMaxWidth(100);
+       qltcTable2.getColumnModel().getColumn(2).setPreferredWidth(100);
+       qltcTable2.getColumnModel().getColumn(2).setMinWidth(100);
+       qltcTable2.getColumnModel().getColumn(2).setMaxWidth(100);
+       qltcTable2.getColumnModel().getColumn(1).setPreferredWidth(150);
+       qltcTable2.getColumnModel().getColumn(1).setMaxWidth(150);
+       qltcTable2.getColumnModel().getColumn(1).setMinWidth(150);
+       qltcTable2.getColumnModel().getColumn(4).setPreferredWidth(90);
+       qltcTable2.getColumnModel().getColumn(4).setMaxWidth(90);
+       qltcTable2.getColumnModel().getColumn(4).setMinWidth(90);
+        qltcTable3.getColumnModel().getColumn(0).setPreferredWidth(50);
+       qltcTable3.getColumnModel().getColumn(0).setMinWidth(50);
+       qltcTable3.getColumnModel().getColumn(0).setMaxWidth(50);
+       qltcTable3.getColumnModel().getColumn(3).setPreferredWidth(100);
+       qltcTable3.getColumnModel().getColumn(3).setMinWidth(100);
+       qltcTable3.getColumnModel().getColumn(3).setMaxWidth(100);
+       qltcTable3.getColumnModel().getColumn(2).setPreferredWidth(100);
+       qltcTable3.getColumnModel().getColumn(2).setMinWidth(100);
+       qltcTable3.getColumnModel().getColumn(2).setMaxWidth(100);
+       qltcTable3.getColumnModel().getColumn(1).setPreferredWidth(150);
+       qltcTable3.getColumnModel().getColumn(1).setMaxWidth(150);
+       qltcTable3.getColumnModel().getColumn(1).setMinWidth(150);
+       qltcTable3.getColumnModel().getColumn(4).setPreferredWidth(90);
+       qltcTable3.getColumnModel().getColumn(4).setMaxWidth(90);
+       qltcTable3.getColumnModel().getColumn(4).setMinWidth(90);
+    }  
     public void fillQLTCFromSelectedRow() {
     // lấy chỉ số của hàng được chọn 
     int row = qltcTable.getSelectedRow();
@@ -844,24 +926,24 @@ public void updateLabelsThongke(List<QLTC> list) {
         addBtn.setEnabled(false);
     }
 }
-    public void fillQLTCFromSelectedRow1() {
+    public void fillQLTCFromSelectedRow2() {
     // lấy chỉ số của hàng được chọn 
-    int row = qltcTable1.getSelectedRow();
+    int row = qltcTable2.getSelectedRow();
     if (row >= 0) {
-        idField.setText(qltcTable1.getModel().getValueAt(row, 0).toString());
-        String ngay = String.valueOf(qltcTable1.getModel().getValueAt(row, 1)); 
+        idField.setText(qltcTable2.getModel().getValueAt(row, 0).toString());
+        String ngay = String.valueOf(qltcTable2.getModel().getValueAt(row,1)); 
     try {
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd/MM/yyyy"); // Thêm thứ vào đằng trước ngày
         Date date = dateFormat.parse(ngay); // Chuyển đổi chuỗi ngày sinh sang đối tượng Date
         dateField.setDate(date); // Hiển thị lại ngày sinh trong JDateChooser
-    } catch (ParseException e) {
+    } catch (ParseException e) { 
         // Xử lý nếu có lỗi ParseException
         e.printStackTrace();
     }
 
-        descriptionField.setText(qltcTable1.getModel().getValueAt(row, 2).toString());
-        amountField.setText(qltcTable1.getModel().getValueAt(row, 3).toString());
-        if("Expense".equals(qltcTable1.getModel().getValueAt(row, 4).toString()))
+        descriptionField.setText(qltcTable2.getModel().getValueAt(row, 2).toString());
+        amountField.setText(qltcTable2.getModel().getValueAt(row, 3).toString());
+        if("Expense".equals(qltcTable2.getModel().getValueAt(row, 4).toString()))
             
             typeCombobox.setSelectedIndex(0);
         else typeCombobox.setSelectedIndex(1);
@@ -872,6 +954,7 @@ public void updateLabelsThongke(List<QLTC> list) {
         addBtn.setEnabled(false);
     }
 }
+
 
 public void clearQLTCInfo() {
     idField.setText("");
@@ -888,7 +971,7 @@ public void clearQLTCInfo() {
     public void showQLTC(QLTC qltc) {
     idField.setText("" + qltc.getId());
     descriptionField.setText("" + qltc.getDescription());
-    amountField.setText(""+ qltc.getAmount());
+    amountField.setText(""+ qltc.getFormattedAmount());
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     String ngayFormatted = dateFormat.format(qltc.getDate());
@@ -902,7 +985,6 @@ public void clearQLTCInfo() {
     addBtn.setEnabled(false);
 }
     public QLTC getQLTCInfo() {
-    // validate Gymer
     if (!validateDate() || !validateDescription() || !validateAmount()) {
         return null;
     }
@@ -912,7 +994,7 @@ public void clearQLTCInfo() {
             qltc.setId(Integer.parseInt(idField.getText()));
         }
         qltc.setDescription(descriptionField.getText().trim());
-        qltc.setAmount(Long.parseLong(amountField.getText().trim()));
+        qltc.setAmount(Long.parseLong(amountField.getText().replaceAll(",", "").trim()));
         
         qltc.setType(typeCombobox.getSelectedItem().toString());
         Date date = dateField.getDate();
@@ -948,7 +1030,7 @@ public void clearQLTCInfo() {
      }   
      private boolean validateAmount() {
         try {
-            long amount = Long.parseLong(amountField.getText().trim());
+            long amount = Long.parseLong(amountField.getText().replaceAll(",", "").trim());
             if (amount<0) {
                 amountField.requestFocus();
                 showMessage("Khoản tiền không hợp lệ.");
@@ -978,6 +1060,9 @@ public void clearQLTCInfo() {
             else if (selectedOption.equals(3)) {
                 return 4;
             }
+            else if (selectedOption.equals(4)) {
+                return 5;
+            }
         }
         return 0;
     }
@@ -1003,6 +1088,7 @@ public void clearQLTCInfo() {
         btnCancelSearch.setEnabled(false);
         btnSearch.setEnabled(true);
         clearBtn.setEnabled(true);
+        FieldSearch.setText("");
         if (id == null || "".equals(id.trim()))
         {
             
@@ -1017,11 +1103,6 @@ public void clearQLTCInfo() {
             deleteBtn.setEnabled(true);
         }
     }
-//      public void actionPerformed(ActionEvent e) {
-//          searchByWeek(dateField, qltcTable);
-//          
-//    }
-    
     public void valueChanged(ListSelectionEvent e) {
     }
     public void addAddQLTCListener(ActionListener listener) {
@@ -1039,14 +1120,20 @@ public void clearQLTCInfo() {
     public void addClearListener(ActionListener listener) {
         clearBtn.addActionListener(listener);
     }
-    
-     
     public void addListQLTCSelectionListener(ListSelectionListener listener) {
         qltcTable.getSelectionModel().addListSelectionListener(listener);
+    }
+    public void addListQLTCSelectionListener2(ListSelectionListener listener) {
+        qltcTable2.getSelectionModel().addListSelectionListener(listener);
         
     }
     public void addListQLTCSelectionListener1(ListSelectionListener listener) {
         qltcTable1.getSelectionModel().addListSelectionListener(listener);
+        
+    }
+    
+    public void addListQLTCSelectionListener3(ListSelectionListener listener) {
+        qltcTable3.getSelectionModel().addListSelectionListener(listener);
         
     }
     public void addSearchListener(ActionListener listener) {
@@ -1060,6 +1147,12 @@ public void clearQLTCInfo() {
 
     public JButton getBtnSearch() {
         return btnSearch;
+    }
+    public JButton getsortbydate() {
+        return sortbydate;
+    }
+    public JButton getsortbyamount() {
+        return sortbyamount;
     }
     public JTextField getFieldSearch() {
         return FieldSearch;
@@ -1079,7 +1172,18 @@ public void clearQLTCInfo() {
     public JTable getQltcTable1() {
         return qltcTable1;
     }
-
+    public JTable getQltcTable2() {
+        return qltcTable2;
+    }
+    public JTable getQltcTable3() {
+        return qltcTable3;
+    }
+public void addSortbydateListener(ActionListener listener) {
+        sortbydate.addActionListener(listener);
+    }
+public void addSortbyamountListener(ActionListener listener) {
+        sortbyamount.addActionListener(listener);
+    }
 
     
     
@@ -1125,6 +1229,8 @@ public void clearQLTCInfo() {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lossLabel;
     private javax.swing.JLabel lossLabelThongke;
     private vn.viettuts.qlsv.PieCharrt.PolarAreaChart polarAreaChart;
@@ -1132,7 +1238,11 @@ public void clearQLTCInfo() {
     private javax.swing.JLabel profitLabelThongke;
     private javax.swing.JTable qltcTable;
     private javax.swing.JTable qltcTable1;
+    private javax.swing.JTable qltcTable2;
+    private javax.swing.JTable qltcTable3;
     private javax.swing.JLabel quanlithuchi;
+    private javax.swing.JButton sortbyamount;
+    private javax.swing.JButton sortbydate;
     private javax.swing.JLabel thongke;
     private javax.swing.JLabel totalExpenseLabel;
     private javax.swing.JLabel totalExpenseLabelThongke;
@@ -1141,4 +1251,5 @@ public void clearQLTCInfo() {
     private javax.swing.JLabel trangchu;
     private javax.swing.JComboBox<String> typeCombobox;
     // End of variables declaration//GEN-END:variables
+
 }

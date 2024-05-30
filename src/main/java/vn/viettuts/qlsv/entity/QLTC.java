@@ -1,5 +1,6 @@
 package vn.viettuts.qlsv.entity;
  import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -43,9 +44,8 @@ public class QLTC implements Serializable {
     
 
     public void setId(int id) {
-        this.id = id;
+        this.id = id;       
     }
-
     public void setDate(Date date) {
         this.date = date;
     }
@@ -60,11 +60,11 @@ public class QLTC implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }  
+    public String getFormattedAmount() {
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        return decimalFormat.format(amount);
     }
-
-   
-
-    
 }
    
     
