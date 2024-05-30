@@ -758,9 +758,6 @@ public void updateLabelsThongke(List<QLTC> list) {
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editBtnActionPerformed
-//       public List<Long> getAgesFromTable() {
-//        return qltcView.getAmountsFromTable();
-//    }
     public void showMessage(String message) {
         JOptionPane.showMessageDialog(this, message);
         
@@ -862,9 +859,6 @@ public void showListQLTC1(List<QLTC> list) {
             currentRow++;
         }
     }
-    
-        
-        //qltcTable.setModel(new DefaultTableModel(qltcs, columnNames));
        qltcTable2.setModel(new DefaultTableModel(qltcs, columnNames));
        qltcTable3.setModel(new DefaultTableModel(qltcs, columnNames));
        qltcTable2.getColumnModel().getColumn(0).setPreferredWidth(50);

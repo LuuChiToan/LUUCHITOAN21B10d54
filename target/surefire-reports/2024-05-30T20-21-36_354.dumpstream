@@ -1,4 +1,4 @@
-# Created at 2024-05-30T17:08:38.715
+# Created at 2024-05-30T20:21:36.465
 Boot Manifest-JAR contains absolute paths in classpath 'D:\ql\qlsv-swing\target\test-classes'
 Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
 'other' has different root

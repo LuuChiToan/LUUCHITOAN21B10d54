@@ -17,18 +17,14 @@ public class QLTCController {
     private QLTCDao qltcDao;
     private QLTCView qltcView;
     List<QLTC> t;
-   
-
     public QLTCController(QLTCView view) {
         this.qltcView = view;
         qltcDao = new QLTCDao();
         t  = qltcDao.readListQLTCs();
-
         view.addAddQLTCListener(new AddQLTCListener());
         view.addEditQLTCListener(new EditQLTCListener());
         view.addDeleteQLTCListener(new DeleteQLTCListener());
         view.addClearListener(new ClearQLTCListener());
-
         view.addListQLTCSelectionListener(new ListQLTCSelectionListener(qltcView));
         view.addListQLTCSelectionListener2(new ListQLTCSelectionListener(qltcView));
         view.addListQLTCSelectionListener3(new ListQLTCSelectionListener(qltcView));
@@ -38,7 +34,6 @@ public class QLTCController {
         view.addSortbydateListener(new SortbydateListener ());
         view.addSortbyamountListener(new SortbyamountListener () );
     }
-
     public void showQLTCView() {
         List<QLTC> qltcList = qltcDao.getListQLTCs();
         qltcView.setVisible(true);
@@ -80,7 +75,6 @@ public class QLTCController {
     }
 
     class DeleteQLTCListener implements ActionListener {
-
         public void actionPerformed(ActionEvent e) {
             QLTC qltc = qltcView.getQLTCInfo();
             if (qltc != null) {

@@ -124,7 +124,7 @@
         <date>2024-01-18T00:00:00+07:00</date>
         <description>tu thuong ban than</description>
         <amount>500</amount>
-        <type>Income</type>
+        <type>Expense</type>
     </qltc>
     <qltc>
         <id>19</id>
@@ -137,7 +137,7 @@
         <id>20</id>
         <date>2024-01-20T00:00:00+07:00</date>
         <description>lam them</description>
-        <amount>423</amount>
+        <amount>424</amount>
         <type>Expense</type>
     </qltc>
     <qltc>
@@ -236,6 +236,6 @@
         <date>2024-02-02T00:00:00+07:00</date>
         <description>lam them</description>
         <amount>1000</amount>
-        <type>Expense</type>
+        <type>Income</type>
     </qltc>
 </QLTC>

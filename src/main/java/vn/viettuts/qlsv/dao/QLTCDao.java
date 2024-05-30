@@ -10,11 +10,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-/**
- * StudentDao class
- * 
- * @author viettuts.vn
- */
 public class QLTCDao {
     private static final String QLTC_FILE_NAME = "qltc.xml";
     
@@ -63,10 +58,10 @@ public class QLTCDao {
     writeListQLTCs(listQLTCs);
 }
 
-public void edit(QLTC qltc) {
-    int size = listQLTCs.size();
-    for (int i = 0; i < size; i++) {
-        if (listQLTCs.get(i).getId() == qltc.getId()) {
+    public void edit(QLTC qltc) {
+        int size = listQLTCs.size();
+        for (int i = 0; i < size; i++) {
+          if (listQLTCs.get(i).getId() == qltc.getId()) {
             listQLTCs.get(i).setDate(qltc.getDate());
             listQLTCs.get(i).setDescription(qltc.getDescription());
             listQLTCs.get(i).setAmount((long) qltc.getAmount());
@@ -76,11 +71,10 @@ public void edit(QLTC qltc) {
         }
     }
 }
-
-public boolean delete(QLTC qltc) {
-    boolean isFound = false;
-    int size = listQLTCs.size();
-    for (int i = 0; i < size; i++) {
+    public boolean delete(QLTC qltc) {
+        boolean isFound = false;
+        int size = listQLTCs.size();
+        for (int i = 0; i < size; i++) {
         if (listQLTCs.get(i).getId() == qltc.getId()) {
             qltc = listQLTCs.get(i);
             isFound = true;
@@ -117,18 +111,9 @@ public void sortQLTCByDate(List<QLTC> listQLTCs) {
             return date1.compareTo(date2);
         }
     });
-
-    // Update IDs after sorting
-//    for (int i = 0; i < listQLTCs.size(); i++) {
-//        listQLTCs.get(i).setId(i + 1);
-//    }
-
     // Print sorted dates
     for (QLTC dateChooser : listQLTCs) {
         Date date = dateChooser.getDate();
-//        if (date != null) {
-//            System.out.println(date.toString());
-//        }
     }
 }
 public void sortQLTCByAmount(List<QLTC> listQLTCs) {
@@ -141,18 +126,7 @@ public void sortQLTCByAmount(List<QLTC> listQLTCs) {
             return Long.compare(amount1, amount2);
         }
     });
-
-    // Update IDs after sorting
-//    for (int i = 0; i < listQLTCs.size(); i++) {
-//        listQLTCs.get(i).setId(i + 1);
-//    }
-
-    // Print sorted amounts
-//    for (QLTC q : listQLTCs) {
-//        System.out.println("ID: " + q.getId() + ", Amount: " + q.getAmount());
-//    }
 }
-
       public List<QLTC> searchDescription(String search){
         List<QLTC>temp = new ArrayList<QLTC>();
         for(QLTC pb : listQLTCs){
@@ -162,8 +136,6 @@ public void sortQLTCByAmount(List<QLTC> listQLTCs) {
         }
         return temp;
 }
-
-
     public List<QLTC> searchDate(String s) {
     List<QLTC> DhTmp = new ArrayList<QLTC>();
     this.listQLTCs = readListQLTCs();
@@ -245,16 +217,11 @@ public void sortQLTCByAmount(List<QLTC> listQLTCs) {
     }
     return DhTmp;
 }
-
-      
-      
-    
-
       public List<QLTC> getListQLTCs() {
         return listQLTCs;
     }
 
-    public void setListGymers(List<QLTC> listQLTCs) {
+    public void setListQLTCs(List<QLTC> listQLTCs) {
         this.listQLTCs = listQLTCs;
     }
 }
